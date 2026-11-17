@@ -1,0 +1,13 @@
+appId: com.saucelabs.mydemoapp.rn
+---
+- runFlow:
+    when:
+      visible: "Allow notifications"
+    commands:
+      - tapOn: "Allow"
+
+- runFlow:
+    when:
+      visible: "Allow location"
+    commands:
+      - tapOn: "While Using the App"

@@ -1,0 +1,14 @@
+appId: com.saucelabs.mydemoapp.rn
+tags:
+  - regression
+---
+- launchApp:
+    clearState: true
+- tapOn: "Username"
+- inputText: "wrong@email.com"
+- tapOn: "Password"
+- inputText: "wrongpassword"
+- hideKeyboard
+- tapOn: "Login"
+- assertVisible: "Username and password do not match"
+- takeScreenshot: regression-login-error

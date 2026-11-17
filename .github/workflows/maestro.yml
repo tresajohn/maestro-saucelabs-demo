@@ -1,0 +1,119 @@
+name: Maestro Mobile Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  android-smoke:
+    name: Smoke Tests (Android)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Download Sauce Labs Demo APK
+        run: |
+          APK_URL=$(curl -s https://api.github.com/repos/saucelabs/my-demo-app-rn/releases/latest \
+            | grep "browser_download_url.*\.apk" \
+            | cut -d '"' -f 4 | head -1)
+          curl -L -o demo-app.apk "$APK_URL"
+
+      - name: Install Maestro
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Enable KVM for emulator
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run smoke tests on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          profile: pixel_6
+          script: |
+            adb install demo-app.apk
+            maestro test .maestro/flows/smoke/ \
+              --include-tags smoke \
+              --format junit \
+              --output maestro-smoke-report.xml \
+              -e EMAIL=bod@example.com \
+              -e PASSWORD=10203040
+
+      - name: Upload smoke test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maestro-smoke-report
+          path: |
+            maestro-smoke-report.xml
+            ~/.maestro/tests/
+
+  android-regression:
+    name: Regression Tests (Android)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    needs: android-smoke
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Download Sauce Labs Demo APK
+        run: |
+          APK_URL=$(curl -s https://api.github.com/repos/saucelabs/my-demo-app-rn/releases/latest \
+            | grep "browser_download_url.*\.apk" \
+            | cut -d '"' -f 4 | head -1)
+          curl -L -o demo-app.apk "$APK_URL"
+
+      - name: Install Maestro
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Enable KVM for emulator
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run regression tests on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          profile: pixel_6
+          script: |
+            adb install demo-app.apk
+            maestro test .maestro/flows/regression/ \
+              --include-tags regression \
+              --format junit \
+              --output maestro-regression-report.xml \
+              -e EMAIL=bod@example.com \
+              -e PASSWORD=10203040
+
+      - name: Upload regression test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maestro-regression-report
+          path: |
+            maestro-regression-report.xml
+            ~/.maestro/tests/

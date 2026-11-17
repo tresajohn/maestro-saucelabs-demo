@@ -1,0 +1,51 @@
+appId: com.saucelabs.mydemoapp.rn
+tags:
+  - smoke
+env:
+  EMAIL: ${EMAIL}
+  PASSWORD: ${PASSWORD}
+---
+- runFlow: ../../subflows/login.yaml
+- runFlow: ../../subflows/dismiss-permissions.yaml
+- runFlow: ../../subflows/add-to-cart.yaml
+
+- tapOn: "Cart"
+- assertVisible: "Sauce Labs Backpack"
+- tapOn: "Proceed To Checkout"
+- assertVisible: "Checkout"
+- takeScreenshot: smoke-checkout-reached
+
+- tapOn: "Full Name"
+- inputText: "Test User"
+- tapOn: "Address Line 1"
+- inputText: "123 QA Street"
+- tapOn: "City"
+- inputText: "Test City"
+- tapOn: "State/Region"
+- inputText: "CA"
+- tapOn: "Zip Code"
+- inputText: "12345"
+- tapOn: "Country"
+- inputText: "USA"
+- hideKeyboard
+- tapOn: "To Payment"
+
+- assertVisible: "Payment"
+- takeScreenshot: smoke-payment-screen
+
+- tapOn: "Full Name"
+- inputText: "Test User"
+- tapOn: "Card Number"
+- inputText: "4111111111111111"
+- tapOn: "Expiration Date"
+- inputText: "12/26"
+- tapOn: "Security Code"
+- inputText: "123"
+- hideKeyboard
+- tapOn: "Review Order"
+
+- assertVisible: "Order Summary"
+- takeScreenshot: smoke-order-summary
+- tapOn: "Place Order"
+- assertVisible: "Thank you"
+- takeScreenshot: smoke-order-confirmed

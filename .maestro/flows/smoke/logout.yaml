@@ -1,0 +1,13 @@
+appId: com.saucelabs.mydemoapp.rn
+tags:
+  - smoke
+env:
+  EMAIL: ${EMAIL}
+  PASSWORD: ${PASSWORD}
+---
+- runFlow: ../../subflows/login.yaml
+- tapOn: "Menu"
+- assertVisible: "Log Out"
+- tapOn: "Log Out"
+- assertVisible: "Login"
+- takeScreenshot: smoke-logout-success

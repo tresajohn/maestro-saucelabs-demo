@@ -1,0 +1,26 @@
+appId: com.saucelabs.mydemoapp.rn
+tags:
+  - regression
+env:
+  EMAIL: ${EMAIL}
+  PASSWORD: ${PASSWORD}
+---
+- runFlow: ../../subflows/login.yaml
+
+- assertVisible: "Products"
+- takeScreenshot: regression-default-sort
+
+- tapOn: "Sort"
+- assertVisible: "Name - Ascending"
+- assertVisible: "Name - Descending"
+- assertVisible: "Price - Ascending"
+- assertVisible: "Price - Descending"
+- tapOn: "Name - Descending"
+
+- assertVisible: "Products"
+- takeScreenshot: regression-sorted-descending
+
+- tapOn: "Sort"
+- tapOn: "Price - Ascending"
+- assertVisible: "Products"
+- takeScreenshot: regression-sorted-by-price

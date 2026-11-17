@@ -1,0 +1,22 @@
+appId: com.saucelabs.mydemoapp.rn
+tags:
+  - regression
+env:
+  EMAIL: ${EMAIL}
+  PASSWORD: ${PASSWORD}
+---
+- runFlow: ../../subflows/login.yaml
+
+- assertVisible: "Products"
+
+- scrollUntilVisible:
+    element:
+      text: "Sauce Labs Onesie"
+    direction: DOWN
+    timeout: 15000
+- assertVisible: "Sauce Labs Onesie"
+- takeScreenshot: regression-scroll-to-last-item
+
+- tapOn: "Sauce Labs Onesie"
+- assertVisible: "Add To Cart"
+- takeScreenshot: regression-product-detail

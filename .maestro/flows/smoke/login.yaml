@@ -1,0 +1,10 @@
+appId: com.saucelabs.mydemoapp.rn
+tags:
+  - smoke
+env:
+  EMAIL: ${EMAIL}
+  PASSWORD: ${PASSWORD}
+---
+- runFlow: ../../subflows/login.yaml
+- assertVisible: "Products"
+- takeScreenshot: smoke-login-success
