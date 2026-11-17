@@ -43,7 +43,7 @@ env:
 - inputText: "4111111111111111"
 - hideKeyboard
 - tapOn: "Expiration Date\\* input field"
-- inputText: "03/26"
+- inputText: "12/30"
 - hideKeyboard
 - tapOn: "Security Code\\* input field"
 - inputText: "123"
