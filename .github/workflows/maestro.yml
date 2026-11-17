@@ -21,11 +21,9 @@ jobs:
           java-version: 17
 
       - name: Download Sauce Labs Demo APK
-        run: |
-          APK_URL=$(curl -s https://api.github.com/repos/saucelabs/my-demo-app-rn/releases/latest \
-            | grep "browser_download_url.*\.apk" \
-            | cut -d '"' -f 4 | head -1)
-          curl -L -o demo-app.apk "$APK_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release download --repo saucelabs/my-demo-app-rn --pattern "Android-*.apk" --output demo-app.apk
 
       - name: Install Maestro
         run: |
@@ -72,11 +70,9 @@ jobs:
           java-version: 17
 
       - name: Download Sauce Labs Demo APK
-        run: |
-          APK_URL=$(curl -s https://api.github.com/repos/saucelabs/my-demo-app-rn/releases/latest \
-            | grep "browser_download_url.*\.apk" \
-            | cut -d '"' -f 4 | head -1)
-          curl -L -o demo-app.apk "$APK_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release download --repo saucelabs/my-demo-app-rn --pattern "Android-*.apk" --output demo-app.apk
 
       - name: Install Maestro
         run: |
