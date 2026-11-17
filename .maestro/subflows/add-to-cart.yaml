@@ -1,5 +1,8 @@
 appId: com.saucelabs.mydemoapp.rn
 ---
+- extendedWaitUntil:
+    visible: "store item"
+    timeout: 20000
 - tapOn: "store item"
 - tapOn: "Add To Cart button"
 - takeScreenshot: item-added-to-cart

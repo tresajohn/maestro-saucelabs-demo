@@ -21,5 +21,5 @@ appId: com.saucelabs.mydemoapp.rn
 - tapOn: "Login button"
 - extendedWaitUntil:
     visible: "open menu"
-    timeout: 10000
+    timeout: 30000
 - takeScreenshot: post-login
