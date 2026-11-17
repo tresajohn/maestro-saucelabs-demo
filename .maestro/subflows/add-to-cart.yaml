@@ -1,8 +1,8 @@
 appId: com.saucelabs.mydemoapp.rn
 ---
 - extendedWaitUntil:
-    visible: "store item"
+    visible: "Sauce Labs Backpack"
     timeout: 20000
-- tapOn: "store item"
+- tapOn: "Sauce Labs Backpack"
 - tapOn: "Add To Cart button"
 - takeScreenshot: item-added-to-cart
