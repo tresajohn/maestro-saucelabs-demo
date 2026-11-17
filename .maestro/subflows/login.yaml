@@ -1,5 +1,6 @@
 appId: com.saucelabs.mydemoapp.rn
 ---
+- stopApp
 - launchApp:
     clearState: true
 - extendedWaitUntil:
@@ -19,7 +20,8 @@ appId: com.saucelabs.mydemoapp.rn
 - inputText: ${PASSWORD}
 - hideKeyboard
 - tapOn: "Login button"
+- waitForAnimationToEnd
 - extendedWaitUntil:
     visible: "open menu"
-    timeout: 60000
+    timeout: 30000
 - takeScreenshot: post-login
