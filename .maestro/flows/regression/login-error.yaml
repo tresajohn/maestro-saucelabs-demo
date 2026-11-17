@@ -4,6 +4,8 @@ tags:
 ---
 - launchApp:
     clearState: true
+- tapOn: "tab bar option menu"
+- tapOn: "menu item log in"
 - tapOn: "Username input field"
 - inputText: "wrong@email.com"
 - tapOn: "Password input field"
