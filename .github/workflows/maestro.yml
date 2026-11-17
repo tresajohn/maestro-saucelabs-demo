@@ -44,6 +44,23 @@ jobs:
           profile: pixel_6
           script: |
             adb install demo-app.apk
+            adb shell monkey -p com.saucelabs.mydemoapp.rn 1
+            sleep 6
+            adb shell uiautomator dump /sdcard/window_dump.xml
+            adb pull /sdcard/window_dump.xml ./ui-dump.xml
+            echo "=== UI HIERARCHY ==="
+            python3 -c "
+            import xml.etree.ElementTree as ET
+            tree = ET.parse('ui-dump.xml')
+            for node in tree.iter('node'):
+                txt = node.get('text','')
+                desc = node.get('content-desc','')
+                rid = node.get('resource-id','')
+                cls = node.get('class','').split('.')[-1]
+                if txt or desc or rid:
+                    print(f'  [{cls}] text=\"{txt}\" desc=\"{desc}\" id=\"{rid}\"')
+            "
+            echo "=== END UI HIERARCHY ==="
             maestro test .maestro/flows/smoke/ --include-tags smoke --format junit --output maestro-smoke-report.xml -e EMAIL=bod@example.com -e PASSWORD=10203040
 
       - name: Upload smoke test report
