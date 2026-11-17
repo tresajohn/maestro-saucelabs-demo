@@ -2,14 +2,11 @@ appId: com.saucelabs.mydemoapp.rn
 ---
 - launchApp:
     clearState: true
-- tapOn:
-    id: "username"
+- tapOn: "Username input field"
 - inputText: ${EMAIL}
-- tapOn:
-    id: "password"
+- tapOn: "Password input field"
 - inputText: ${PASSWORD}
 - hideKeyboard
-- tapOn:
-    id: "login-btn"
+- tapOn: "Login button"
 - assertVisible: "Products"
 - takeScreenshot: post-login

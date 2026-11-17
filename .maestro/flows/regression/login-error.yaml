@@ -4,11 +4,11 @@ tags:
 ---
 - launchApp:
     clearState: true
-- tapOn: "Username"
+- tapOn: "Username input field"
 - inputText: "wrong@email.com"
-- tapOn: "Password"
+- tapOn: "Password input field"
 - inputText: "wrongpassword"
 - hideKeyboard
-- tapOn: "Login"
-- assertVisible: "Username and password do not match"
+- tapOn: "Login button"
+- assertVisible: "Provided credentials do not match any user in this service."
 - takeScreenshot: regression-login-error
