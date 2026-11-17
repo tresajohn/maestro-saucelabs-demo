@@ -45,12 +45,7 @@ jobs:
           script: |
             adb install demo-app.apk
             adb shell monkey -p com.saucelabs.mydemoapp.rn 1
-            for i in $(seq 1 45); do
-              adb shell uiautomator dump /sdcard/init.xml 2>/dev/null || true
-              adb pull /sdcard/init.xml ./init.xml 2>/dev/null || true
-              grep -q 'content-desc="open menu"' ./init.xml 2>/dev/null && break
-              sleep 2
-            done
+            sleep 45
             adb shell input keyevent 3
             maestro test .maestro/flows/smoke/ --include-tags smoke --format junit --output maestro-smoke-report.xml -e EMAIL=bod@example.com -e PASSWORD=10203040
 
@@ -102,12 +97,7 @@ jobs:
           script: |
             adb install demo-app.apk
             adb shell monkey -p com.saucelabs.mydemoapp.rn 1
-            for i in $(seq 1 45); do
-              adb shell uiautomator dump /sdcard/init.xml 2>/dev/null || true
-              adb pull /sdcard/init.xml ./init.xml 2>/dev/null || true
-              grep -q 'content-desc="open menu"' ./init.xml 2>/dev/null && break
-              sleep 2
-            done
+            sleep 45
             adb shell input keyevent 3
             maestro test .maestro/flows/regression/ --include-tags regression --format junit --output maestro-regression-report.xml -e EMAIL=bod@example.com -e PASSWORD=10203040
 
