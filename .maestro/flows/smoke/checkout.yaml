@@ -12,7 +12,7 @@ env:
 - tapOn: "Cart"
 - assertVisible: "Sauce Labs Backpack"
 - takeScreenshot: smoke-cart-contents
-- tapOn: "Proceed To Checkout"
+- tapOn: "Proceed To Checkout button"
 
 - assertVisible: "Enter a shipping address"
 - tapOn: "Full Name"
@@ -28,7 +28,7 @@ env:
 - tapOn: "Country"
 - inputText: "USA"
 - hideKeyboard
-- tapOn: "To Payment"
+- tapOn: "To Payment button"
 
 - assertVisible: "Enter a payment method"
 - tapOn: "Full Name"
@@ -40,10 +40,10 @@ env:
 - tapOn: "Security Code"
 - inputText: "123"
 - hideKeyboard
-- tapOn: "Review Order"
+- tapOn: "Review Order button"
 
 - assertVisible: "Review your order"
 - takeScreenshot: smoke-order-review
-- tapOn: "Place Order"
+- tapOn: "Place Order button"
 - assertVisible: "Thank you for your order"
 - takeScreenshot: smoke-order-confirmed

@@ -15,6 +15,6 @@ appId: com.saucelabs.mydemoapp.rn
 - tapOn: "Password"
 - inputText: ${PASSWORD}
 - hideKeyboard
-- tapOn: "Login"
+- tapOn: "Login button"
 - assertVisible: "Products"
 - takeScreenshot: post-login

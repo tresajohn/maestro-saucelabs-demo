@@ -6,5 +6,5 @@ appId: com.saucelabs.mydemoapp.rn
     direction: DOWN
     timeout: 10000
 - tapOn: "Sauce Labs Backpack"
-- tapOn: "Add To Cart"
+- tapOn: "Add To Cart button"
 - takeScreenshot: item-added-to-cart
