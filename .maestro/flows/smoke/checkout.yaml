@@ -17,14 +17,19 @@ env:
 - assertVisible: "Enter a shipping address"
 - tapOn: "Full Name\\* input field"
 - inputText: "Test User"
+- hideKeyboard
 - tapOn: "Address Line 1\\* input field"
 - inputText: "123 QA Street"
+- hideKeyboard
 - tapOn: "City\\* input field"
 - inputText: "Test City"
+- hideKeyboard
 - tapOn: "State/Region input field"
 - inputText: "CA"
+- hideKeyboard
 - tapOn: "Zip Code\\* input field"
 - inputText: "12345"
+- hideKeyboard
 - tapOn: "Country\\* input field"
 - inputText: "USA"
 - hideKeyboard
@@ -33,10 +38,13 @@ env:
 - assertVisible: "Enter a payment method"
 - tapOn: "Full Name\\* input field"
 - inputText: "Test User"
+- hideKeyboard
 - tapOn: "Card Number\\* input field"
 - inputText: "4111111111111111"
+- hideKeyboard
 - tapOn: "Expiration Date\\* input field"
 - inputText: "03/26"
+- hideKeyboard
 - tapOn: "Security Code\\* input field"
 - inputText: "123"
 - hideKeyboard
