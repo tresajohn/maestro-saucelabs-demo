@@ -9,35 +9,35 @@ env:
 - runFlow: ../../subflows/dismiss-permissions.yaml
 - runFlow: ../../subflows/add-to-cart.yaml
 
-- tapOn: "Cart"
+- tapOn: "1"
 - assertVisible: "Sauce Labs Backpack"
 - takeScreenshot: smoke-cart-contents
 - tapOn: "Proceed To Checkout button"
 
 - assertVisible: "Enter a shipping address"
-- tapOn: "Full Name"
+- tapOn: "Full Name input field"
 - inputText: "Test User"
-- tapOn: "Address Line 1"
+- tapOn: "Address Line 1 input field"
 - inputText: "123 QA Street"
-- tapOn: "City"
+- tapOn: "City input field"
 - inputText: "Test City"
-- tapOn: "State/Region"
+- tapOn: "State/Region input field"
 - inputText: "CA"
-- tapOn: "Zip Code"
+- tapOn: "Zip Code input field"
 - inputText: "12345"
-- tapOn: "Country"
+- tapOn: "Country input field"
 - inputText: "USA"
 - hideKeyboard
 - tapOn: "To Payment button"
 
 - assertVisible: "Enter a payment method"
-- tapOn: "Full Name"
+- tapOn: "Full Name input field"
 - inputText: "Test User"
-- tapOn: "Card Number"
+- tapOn: "Card Number input field"
 - inputText: "4111111111111111"
-- tapOn: "Expiration Date"
+- tapOn: "Expiration Date input field"
 - inputText: "03/26"
-- tapOn: "Security Code"
+- tapOn: "Security Code input field"
 - inputText: "123"
 - hideKeyboard
 - tapOn: "Review Order button"

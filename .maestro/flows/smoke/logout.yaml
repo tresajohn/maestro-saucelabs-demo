@@ -12,5 +12,6 @@ env:
     duration: 500
 - tapOn: "Log Out"
 - tapOn: "Log Out"
-- assertVisible: "Log In"
+- tapOn: "OK"
+- assertVisible: "Username input field"
 - takeScreenshot: smoke-logout-success
