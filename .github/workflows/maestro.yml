@@ -47,7 +47,7 @@ jobs:
             adb shell monkey -p com.saucelabs.mydemoapp.rn 1
             sleep 45
             adb shell input keyevent 3
-            maestro test .maestro/flows/smoke/ --include-tags smoke --format junit --output maestro-smoke-report.xml -e EMAIL=bod@example.com -e PASSWORD=10203040
+            maestro test .maestro/flows/smoke/ --include-tags smoke --format junit --output maestro-smoke-report.xml -e EMAIL=bob@example.com -e PASSWORD=10203040
 
       - name: Upload smoke test report
         if: always()
@@ -99,7 +99,7 @@ jobs:
             adb shell monkey -p com.saucelabs.mydemoapp.rn 1
             sleep 45
             adb shell input keyevent 3
-            maestro test .maestro/flows/regression/ --include-tags regression --format junit --output maestro-regression-report.xml -e EMAIL=bod@example.com -e PASSWORD=10203040
+            maestro test .maestro/flows/regression/ --include-tags regression --format junit --output maestro-regression-report.xml -e EMAIL=bob@example.com -e PASSWORD=10203040
 
       - name: Upload regression test report
         if: always()

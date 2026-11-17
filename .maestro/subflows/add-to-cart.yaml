@@ -1,6 +1,5 @@
 appId: com.saucelabs.mydemoapp.rn
 ---
-- takeScreenshot: pre-add-to-cart-state
 - extendedWaitUntil:
     visible: "Sauce Labs Backpack"
     timeout: 20000
