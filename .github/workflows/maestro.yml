@@ -132,16 +132,7 @@ jobs:
 
       - name: Boot iOS Simulator
         run: |
-          DEVICE_UDID=$(xcrun simctl list devices available -j | python3 -c "
-import json, sys
-data = json.load(sys.stdin)
-for runtime in sorted(data['devices'].keys(), reverse=True):
-    if 'iOS' in runtime:
-        for d in data['devices'][runtime]:
-            if 'iPhone' in d['name'] and d['isAvailable']:
-                print(d['udid'])
-                sys.exit(0)
-")
+          DEVICE_UDID=$(xcrun simctl list devices available | grep -E "iPhone [0-9]" | tail -1 | awk -F'[()]' '{print $2}')
           echo "Booting simulator: $DEVICE_UDID"
           xcrun simctl boot "$DEVICE_UDID"
           xcrun simctl bootstatus "$DEVICE_UDID" -b
@@ -192,16 +183,7 @@ for runtime in sorted(data['devices'].keys(), reverse=True):
 
       - name: Boot iOS Simulator
         run: |
-          DEVICE_UDID=$(xcrun simctl list devices available -j | python3 -c "
-import json, sys
-data = json.load(sys.stdin)
-for runtime in sorted(data['devices'].keys(), reverse=True):
-    if 'iOS' in runtime:
-        for d in data['devices'][runtime]:
-            if 'iPhone' in d['name'] and d['isAvailable']:
-                print(d['udid'])
-                sys.exit(0)
-")
+          DEVICE_UDID=$(xcrun simctl list devices available | grep -E "iPhone [0-9]" | tail -1 | awk -F'[()]' '{print $2}')
           echo "Booting simulator: $DEVICE_UDID"
           xcrun simctl boot "$DEVICE_UDID"
           xcrun simctl bootstatus "$DEVICE_UDID" -b
