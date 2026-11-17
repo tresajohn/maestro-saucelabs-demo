@@ -10,9 +10,12 @@ appId: com.saucelabs.mydemoapp.rn
     end: "60%, 50%"
     duration: 500
 - tapOn: "Log In"
-- tapOn: "Username"
+- extendedWaitUntil:
+    visible: "Username input field"
+    timeout: 10000
+- tapOn: "Username input field"
 - inputText: ${EMAIL}
-- tapOn: "Password"
+- tapOn: "Password input field"
 - inputText: ${PASSWORD}
 - hideKeyboard
 - tapOn: "Login button"

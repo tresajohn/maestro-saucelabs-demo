@@ -4,13 +4,22 @@ tags:
 ---
 - launchApp:
     clearState: true
-- tapOn: "Menu"
+- extendedWaitUntil:
+    visible: "Products"
+    timeout: 15000
+- swipe:
+    start: "0%, 50%"
+    end: "60%, 50%"
+    duration: 500
 - tapOn: "Log In"
-- tapOn: "Username"
+- extendedWaitUntil:
+    visible: "Username input field"
+    timeout: 10000
+- tapOn: "Username input field"
 - inputText: "wrong@email.com"
-- tapOn: "Password"
+- tapOn: "Password input field"
 - inputText: "wrongpassword"
 - hideKeyboard
-- tapOn: "Login"
+- tapOn: "Login button"
 - assertVisible: "Provided credentials do not match any user in this service."
 - takeScreenshot: regression-login-error

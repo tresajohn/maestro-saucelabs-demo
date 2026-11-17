@@ -6,8 +6,11 @@ env:
   PASSWORD: ${PASSWORD}
 ---
 - runFlow: ../../subflows/login.yaml
-- tapOn: "Menu"
-- assertVisible: "Log Out"
+- swipe:
+    start: "0%, 50%"
+    end: "60%, 50%"
+    duration: 500
+- tapOn: "Log Out"
 - tapOn: "Log Out"
 - assertVisible: "Log In"
 - takeScreenshot: smoke-logout-success
