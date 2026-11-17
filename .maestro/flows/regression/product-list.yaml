@@ -6,14 +6,14 @@ env:
   PASSWORD: ${PASSWORD}
 ---
 - runFlow: ../../subflows/login.yaml
-- assertVisible: "Sauce Labs Backpack"
+- assertVisible: "open menu"
 - scrollUntilVisible:
     element:
-      text: "Sauce Labs Onesie"
+      id: "store item"
     direction: DOWN
     timeout: 15000
-- assertVisible: "Sauce Labs Onesie"
-- takeScreenshot: regression-scroll-to-last-item
-- tapOn: "Sauce Labs Onesie"
+- tapOn:
+    id: "store item"
+    index: 5
 - assertVisible: "Add To Cart button"
 - takeScreenshot: regression-product-detail

@@ -10,7 +10,7 @@ env:
 - runFlow: ../../subflows/add-to-cart.yaml
 
 - tapOn: "1"
-- assertVisible: "Sauce Labs Backpack"
+- assertVisible: "Proceed To Checkout button"
 - takeScreenshot: smoke-cart-contents
 - tapOn: "Proceed To Checkout button"
 

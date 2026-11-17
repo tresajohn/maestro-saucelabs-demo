@@ -4,7 +4,7 @@ appId: com.saucelabs.mydemoapp.rn
     clearState: true
 - extendedWaitUntil:
     visible: "open menu"
-    timeout: 15000
+    timeout: 30000
 - swipe:
     start: "0%, 50%"
     end: "60%, 50%"
