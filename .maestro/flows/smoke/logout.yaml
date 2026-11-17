@@ -6,8 +6,9 @@ env:
   PASSWORD: ${PASSWORD}
 ---
 - runFlow: ../../subflows/login.yaml
-- tapOn: "Menu"
+- tapOn:
+    id: "tab-bar-menu"
 - assertVisible: "Log Out"
 - tapOn: "Log Out"
-- assertVisible: "Login"
+- assertVisible: "Products"
 - takeScreenshot: smoke-logout-success
