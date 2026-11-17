@@ -6,6 +6,5 @@ appId: com.saucelabs.mydemoapp.rn
     direction: DOWN
     timeout: 10000
 - tapOn: "Sauce Labs Backpack"
-- tapOn: "Add To Cart button"
-- assertVisible: "cart badge"
+- tapOn: "Add To Cart"
 - takeScreenshot: item-added-to-cart

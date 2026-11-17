@@ -4,13 +4,13 @@ tags:
 ---
 - launchApp:
     clearState: true
-- tapOn: "tab bar option menu"
-- tapOn: "menu item log in"
-- tapOn: "Username input field"
+- tapOn: "Menu"
+- tapOn: "Log In"
+- tapOn: "Username"
 - inputText: "wrong@email.com"
-- tapOn: "Password input field"
+- tapOn: "Password"
 - inputText: "wrongpassword"
 - hideKeyboard
-- tapOn: "Login button"
+- tapOn: "Login"
 - assertVisible: "Provided credentials do not match any user in this service."
 - takeScreenshot: regression-login-error
