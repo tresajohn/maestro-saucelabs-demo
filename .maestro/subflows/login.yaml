@@ -4,13 +4,23 @@ appId: com.saucelabs.mydemoapp.rn
 - launchApp:
     clearState: true
 - extendedWaitUntil:
-    visible: "open menu"
+    visible: "Sauce Labs Backpack"
     timeout: 60000
-- swipe:
-    start: "0%, 50%"
-    end: "60%, 50%"
-    duration: 500
-- tapOn: "Log In"
+- runFlow:
+    when:
+      visible: "open menu"
+    commands:
+      - swipe:
+          start: "0%, 50%"
+          end: "60%, 50%"
+          duration: 500
+      - tapOn: "Log In"
+- runFlow:
+    when:
+      visible: "Menu, tab, 3 of 3"
+    commands:
+      - tapOn: "Menu, tab, 3 of 3"
+      - tapOn: "Log In"
 - extendedWaitUntil:
     visible: "Username input field"
     timeout: 10000
@@ -22,6 +32,6 @@ appId: com.saucelabs.mydemoapp.rn
 - tapOn: "Login button"
 - waitForAnimationToEnd
 - extendedWaitUntil:
-    visible: "open menu"
+    visible: "Sauce Labs Backpack"
     timeout: 30000
 - takeScreenshot: post-login

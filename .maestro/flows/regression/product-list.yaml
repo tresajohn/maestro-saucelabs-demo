@@ -6,7 +6,7 @@ env:
   PASSWORD: ${PASSWORD}
 ---
 - runFlow: ../../subflows/login.yaml
-- assertVisible: "open menu"
+- assertVisible: "Sauce Labs Backpack"
 - tapOn: "store item"
 - assertVisible: "Add To Cart button"
 - takeScreenshot: regression-product-detail

@@ -5,13 +5,23 @@ tags:
 - launchApp:
     clearState: true
 - extendedWaitUntil:
-    visible: "Products"
+    visible: "Sauce Labs Backpack"
     timeout: 15000
-- swipe:
-    start: "0%, 50%"
-    end: "60%, 50%"
-    duration: 500
-- tapOn: "Log In"
+- runFlow:
+    when:
+      visible: "open menu"
+    commands:
+      - swipe:
+          start: "0%, 50%"
+          end: "60%, 50%"
+          duration: 500
+      - tapOn: "Log In"
+- runFlow:
+    when:
+      visible: "Menu, tab, 3 of 3"
+    commands:
+      - tapOn: "Menu, tab, 3 of 3"
+      - tapOn: "Log In"
 - extendedWaitUntil:
     visible: "Username input field"
     timeout: 10000
