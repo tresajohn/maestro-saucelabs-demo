@@ -6,7 +6,7 @@ env:
   PASSWORD: ${PASSWORD}
 ---
 - runFlow: ../../subflows/login.yaml
-- assertVisible: "Products"
+- assertVisible: "Sauce Labs Backpack"
 - takeScreenshot: regression-default-sort
 - tapOn: "sort button"
 - assertVisible: "Name - Ascending"

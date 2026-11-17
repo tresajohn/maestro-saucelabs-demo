@@ -6,7 +6,7 @@ env:
   PASSWORD: ${PASSWORD}
 ---
 - runFlow: ../../subflows/login.yaml
-- assertVisible: "Products"
+- assertVisible: "Sauce Labs Backpack"
 - scrollUntilVisible:
     element:
       text: "Sauce Labs Onesie"

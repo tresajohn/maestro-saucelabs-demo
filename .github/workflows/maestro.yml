@@ -44,13 +44,6 @@ jobs:
           profile: pixel_6
           script: |
             adb install demo-app.apk
-            adb shell monkey -p com.saucelabs.mydemoapp.rn 1
-            sleep 6
-            adb shell uiautomator dump /sdcard/window_dump.xml
-            adb pull /sdcard/window_dump.xml ./ui-dump.xml
-            echo "=== UI HIERARCHY ==="
-            grep -oP '(text|content-desc|resource-id)="[^"]*"' ./ui-dump.xml | grep -v '=""' | head -80
-            echo "=== END UI HIERARCHY ==="
             maestro test .maestro/flows/smoke/ --include-tags smoke --format junit --output maestro-smoke-report.xml -e EMAIL=bod@example.com -e PASSWORD=10203040
 
       - name: Upload smoke test report
