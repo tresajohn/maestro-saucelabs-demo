@@ -7,13 +7,6 @@ env:
 ---
 - runFlow: ../../subflows/login.yaml
 - assertVisible: "open menu"
-- scrollUntilVisible:
-    element:
-      id: "store item"
-    direction: DOWN
-    timeout: 15000
-- tapOn:
-    id: "store item"
-    index: 5
+- tapOn: "store item"
 - assertVisible: "Add To Cart button"
 - takeScreenshot: regression-product-detail

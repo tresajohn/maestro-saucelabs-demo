@@ -1,7 +1,5 @@
 appId: com.saucelabs.mydemoapp.rn
 ---
-- tapOn:
-    id: "store item"
-    index: 0
+- tapOn: "store item"
 - tapOn: "Add To Cart button"
 - takeScreenshot: item-added-to-cart
