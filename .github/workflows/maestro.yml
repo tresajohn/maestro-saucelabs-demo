@@ -109,3 +109,122 @@ jobs:
           path: |
             maestro-regression-report.xml
             ~/.maestro/tests/
+
+  ios-smoke:
+    name: Smoke Tests (iOS)
+    runs-on: macos-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Sauce Labs Demo iOS App
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release download --repo saucelabs/my-demo-app-rn --pattern "iOS-Simulator-*.zip" --output demo-app.zip
+          unzip demo-app.zip -d demo-app
+
+      - name: Install Maestro
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Boot iOS Simulator
+        run: |
+          DEVICE_UDID=$(xcrun simctl list devices available -j | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+for runtime in sorted(data['devices'].keys(), reverse=True):
+    if 'iOS' in runtime:
+        for d in data['devices'][runtime]:
+            if 'iPhone' in d['name'] and d['isAvailable']:
+                print(d['udid'])
+                sys.exit(0)
+")
+          echo "Booting simulator: $DEVICE_UDID"
+          xcrun simctl boot "$DEVICE_UDID"
+          xcrun simctl bootstatus "$DEVICE_UDID" -b
+          open -a Simulator
+          sleep 15
+
+      - name: Install and launch app
+        run: |
+          APP_PATH=$(find demo-app -name "*.app" | head -1)
+          echo "Installing: $APP_PATH"
+          xcrun simctl install booted "$APP_PATH"
+          xcrun simctl launch booted com.saucelabs.mydemoapp.rn
+          sleep 20
+
+      - name: Run smoke tests on iOS simulator
+        run: |
+          maestro test .maestro/flows/smoke/ --include-tags smoke --format junit --output maestro-ios-smoke-report.xml -e EMAIL=bob@example.com -e PASSWORD=10203040
+
+      - name: Upload smoke test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maestro-ios-smoke-report
+          path: |
+            maestro-ios-smoke-report.xml
+            ~/.maestro/tests/
+
+  ios-regression:
+    name: Regression Tests (iOS)
+    runs-on: macos-latest
+    timeout-minutes: 90
+    needs: ios-smoke
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Sauce Labs Demo iOS App
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release download --repo saucelabs/my-demo-app-rn --pattern "iOS-Simulator-*.zip" --output demo-app.zip
+          unzip demo-app.zip -d demo-app
+
+      - name: Install Maestro
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Boot iOS Simulator
+        run: |
+          DEVICE_UDID=$(xcrun simctl list devices available -j | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+for runtime in sorted(data['devices'].keys(), reverse=True):
+    if 'iOS' in runtime:
+        for d in data['devices'][runtime]:
+            if 'iPhone' in d['name'] and d['isAvailable']:
+                print(d['udid'])
+                sys.exit(0)
+")
+          echo "Booting simulator: $DEVICE_UDID"
+          xcrun simctl boot "$DEVICE_UDID"
+          xcrun simctl bootstatus "$DEVICE_UDID" -b
+          open -a Simulator
+          sleep 15
+
+      - name: Install and launch app
+        run: |
+          APP_PATH=$(find demo-app -name "*.app" | head -1)
+          echo "Installing: $APP_PATH"
+          xcrun simctl install booted "$APP_PATH"
+          xcrun simctl launch booted com.saucelabs.mydemoapp.rn
+          sleep 20
+
+      - name: Run regression tests on iOS simulator
+        run: |
+          maestro test .maestro/flows/regression/ --include-tags regression --format junit --output maestro-ios-regression-report.xml -e EMAIL=bob@example.com -e PASSWORD=10203040
+
+      - name: Upload regression test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maestro-ios-regression-report
+          path: |
+            maestro-ios-regression-report.xml
+            ~/.maestro/tests/
