@@ -13,5 +13,5 @@ env:
 - tapOn: "Log Out"
 - tapOn: "Log Out"
 - tapOn: "OK"
-- assertVisible: "Username input field"
+- assertVisible: "open menu"
 - takeScreenshot: smoke-logout-success

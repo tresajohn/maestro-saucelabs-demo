@@ -3,7 +3,7 @@ appId: com.saucelabs.mydemoapp.rn
 - launchApp:
     clearState: true
 - extendedWaitUntil:
-    visible: "Sauce Labs Backpack"
+    visible: "open menu"
     timeout: 15000
 - swipe:
     start: "0%, 50%"
@@ -20,6 +20,6 @@ appId: com.saucelabs.mydemoapp.rn
 - hideKeyboard
 - tapOn: "Login button"
 - extendedWaitUntil:
-    visible: "Sauce Labs Backpack"
+    visible: "open menu"
     timeout: 10000
 - takeScreenshot: post-login
