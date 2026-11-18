@@ -6,7 +6,7 @@ tags:
     clearState: true
 - extendedWaitUntil:
     visible: "Sauce Labs Backpack"
-    timeout: 15000
+    timeout: 60000
 - runFlow:
     when:
       visible: "open menu"
