@@ -39,21 +39,15 @@ appId: com.saucelabs.mydemoapp.rn
       platform: "iOS"
     commands:
       - takeScreenshot: ios-debug-block-start
-      - tapOn:
-          text: "Username"
-          index: 1
+      - tapOn: "Username"
       - takeScreenshot: ios-debug-after-username-tap
       - inputText: ${EMAIL}
       - takeScreenshot: ios-debug-after-email-input
-      - tapOn:
-          text: "Password"
-          index: 1
+      - tapOn: "Password"
       - inputText: ${PASSWORD}
       - hideKeyboard
       - takeScreenshot: ios-debug-before-login-tap
-      - tapOn:
-          text: "Login"
-          index: 1
+      - tapOn: "Login"
 - waitForAnimationToEnd
 - extendedWaitUntil:
     visible: "Sauce Labs Backpack"

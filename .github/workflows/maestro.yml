@@ -134,6 +134,7 @@ jobs:
         run: |
           DEVICE_UDID=$(xcrun simctl list devices available | grep -E "iPhone [0-9]" | tail -1 | awk -F'[()]' '{print $2}')
           echo "Booting simulator: $DEVICE_UDID"
+          defaults write com.apple.iphonesimulator ConnectHardwareKeyboard -bool NO
           xcrun simctl boot "$DEVICE_UDID"
           xcrun simctl bootstatus "$DEVICE_UDID" -b
           open -a Simulator
@@ -185,6 +186,7 @@ jobs:
         run: |
           DEVICE_UDID=$(xcrun simctl list devices available | grep -E "iPhone [0-9]" | tail -1 | awk -F'[()]' '{print $2}')
           echo "Booting simulator: $DEVICE_UDID"
+          defaults write com.apple.iphonesimulator ConnectHardwareKeyboard -bool NO
           xcrun simctl boot "$DEVICE_UDID"
           xcrun simctl bootstatus "$DEVICE_UDID" -b
           open -a Simulator
