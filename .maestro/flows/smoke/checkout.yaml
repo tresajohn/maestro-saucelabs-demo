@@ -10,48 +10,114 @@ env:
 - runFlow: ../../subflows/add-to-cart.yaml
 
 - tapOn: "1"
-- assertVisible: "Proceed To Checkout"
-- takeScreenshot: smoke-cart-contents
-- tapOn: "Proceed To Checkout"
+- runFlow:
+    when:
+      platform: "Android"
+    commands:
+      - assertVisible: "Proceed To Checkout button"
+      - tapOn: "Proceed To Checkout button"
+- runFlow:
+    when:
+      platform: "iOS"
+    commands:
+      - assertVisible: "Proceed To Checkout"
+      - tapOn: "Proceed To Checkout"
 
 - assertVisible: "Enter a shipping address"
-- tapOn: "Full Name"
-- inputText: "Test User"
-- hideKeyboard
-- tapOn: "Address Line 1"
-- inputText: "123 QA Street"
-- hideKeyboard
-- tapOn: "City"
-- inputText: "Test City"
-- hideKeyboard
-- tapOn: "State/Region"
-- inputText: "CA"
-- hideKeyboard
-- tapOn: "Zip Code"
-- inputText: "12345"
-- hideKeyboard
-- tapOn: "Country"
-- inputText: "USA"
-- hideKeyboard
-- tapOn: "To Payment"
+- runFlow:
+    when:
+      platform: "Android"
+    commands:
+      - tapOn: "Full Name\\* input field"
+      - inputText: "Test User"
+      - hideKeyboard
+      - tapOn: "Address Line 1\\* input field"
+      - inputText: "123 QA Street"
+      - hideKeyboard
+      - tapOn: "City\\* input field"
+      - inputText: "Test City"
+      - hideKeyboard
+      - tapOn: "State/Region input field"
+      - inputText: "CA"
+      - hideKeyboard
+      - tapOn: "Zip Code\\* input field"
+      - inputText: "12345"
+      - hideKeyboard
+      - tapOn: "Country\\* input field"
+      - inputText: "USA"
+      - hideKeyboard
+      - tapOn: "To Payment button"
+- runFlow:
+    when:
+      platform: "iOS"
+    commands:
+      - tapOn: "Full Name"
+      - inputText: "Test User"
+      - hideKeyboard
+      - tapOn: "Address Line 1"
+      - inputText: "123 QA Street"
+      - hideKeyboard
+      - tapOn: "City"
+      - inputText: "Test City"
+      - hideKeyboard
+      - tapOn: "State/Region"
+      - inputText: "CA"
+      - hideKeyboard
+      - tapOn: "Zip Code"
+      - inputText: "12345"
+      - hideKeyboard
+      - tapOn: "Country"
+      - inputText: "USA"
+      - hideKeyboard
+      - tapOn: "To Payment"
 
 - assertVisible: "Enter a payment method"
-- tapOn: "Full Name"
-- inputText: "Test User"
-- hideKeyboard
-- tapOn: "Card Number"
-- inputText: "4111111111111111"
-- hideKeyboard
-- tapOn: "Expiration Date"
-- inputText: "12/30"
-- hideKeyboard
-- tapOn: "Security Code"
-- inputText: "123"
-- hideKeyboard
-- tapOn: "Review Order"
+- runFlow:
+    when:
+      platform: "Android"
+    commands:
+      - tapOn: "Full Name\\* input field"
+      - inputText: "Test User"
+      - hideKeyboard
+      - tapOn: "Card Number\\* input field"
+      - inputText: "4111111111111111"
+      - hideKeyboard
+      - tapOn: "Expiration Date\\* input field"
+      - inputText: "12/30"
+      - hideKeyboard
+      - tapOn: "Security Code\\* input field"
+      - inputText: "123"
+      - hideKeyboard
+      - tapOn: "Review Order button"
+- runFlow:
+    when:
+      platform: "iOS"
+    commands:
+      - tapOn: "Full Name"
+      - inputText: "Test User"
+      - hideKeyboard
+      - tapOn: "Card Number"
+      - inputText: "4111111111111111"
+      - hideKeyboard
+      - tapOn: "Expiration Date"
+      - inputText: "12/30"
+      - hideKeyboard
+      - tapOn: "Security Code"
+      - inputText: "123"
+      - hideKeyboard
+      - tapOn: "Review Order"
 
 - assertVisible: "Review your order"
 - takeScreenshot: smoke-order-review
-- tapOn: "Place Order"
+- runFlow:
+    when:
+      platform: "Android"
+    commands:
+      - tapOn: "Place Order button"
+- runFlow:
+    when:
+      platform: "iOS"
+    commands:
+      - tapOn: "Place Order"
 - assertVisible: "Thank you for your order"
 - takeScreenshot: smoke-order-confirmed

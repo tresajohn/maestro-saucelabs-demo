@@ -4,5 +4,14 @@ appId: com.saucelabs.mydemoapp.rn
     visible: "Sauce Labs Backpack"
     timeout: 20000
 - tapOn: "Sauce Labs Backpack"
-- tapOn: "Add To Cart"
+- runFlow:
+    when:
+      platform: "Android"
+    commands:
+      - tapOn: "Add To Cart button"
+- runFlow:
+    when:
+      platform: "iOS"
+    commands:
+      - tapOn: "Add To Cart"
 - takeScreenshot: item-added-to-cart

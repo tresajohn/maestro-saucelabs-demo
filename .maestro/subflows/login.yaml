@@ -24,12 +24,26 @@ appId: com.saucelabs.mydemoapp.rn
 - extendedWaitUntil:
     visible: "Username"
     timeout: 10000
-- tapOn: "Username"
-- inputText: ${EMAIL}
-- tapOn: "Password"
-- inputText: ${PASSWORD}
-- hideKeyboard
-- tapOn: "Login"
+- runFlow:
+    when:
+      platform: "Android"
+    commands:
+      - tapOn: "Username input field"
+      - inputText: ${EMAIL}
+      - tapOn: "Password input field"
+      - inputText: ${PASSWORD}
+      - hideKeyboard
+      - tapOn: "Login button"
+- runFlow:
+    when:
+      platform: "iOS"
+    commands:
+      - tapOn: "Username"
+      - inputText: ${EMAIL}
+      - tapOn: "Password"
+      - inputText: ${PASSWORD}
+      - hideKeyboard
+      - tapOn: "Login"
 - waitForAnimationToEnd
 - extendedWaitUntil:
     visible: "Sauce Labs Backpack"
