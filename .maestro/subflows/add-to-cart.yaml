@@ -4,5 +4,5 @@ appId: com.saucelabs.mydemoapp.rn
     visible: "Sauce Labs Backpack"
     timeout: 20000
 - tapOn: "Sauce Labs Backpack"
-- tapOn: "Add To Cart button"
+- tapOn: "Add To Cart"
 - takeScreenshot: item-added-to-cart

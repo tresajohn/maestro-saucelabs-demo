@@ -22,5 +22,5 @@ env:
 - tapOn: "Log Out"
 - tapOn: "Log Out"
 - tapOn: "OK"
-- assertVisible: "Sauce Labs Backpack"
+- assertVisible: "Username"
 - takeScreenshot: smoke-logout-success

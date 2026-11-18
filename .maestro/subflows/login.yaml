@@ -22,14 +22,14 @@ appId: com.saucelabs.mydemoapp.rn
       - tapOn: "Menu, tab, 3 of 3"
       - tapOn: "Log In"
 - extendedWaitUntil:
-    visible: "Username input field"
+    visible: "Username"
     timeout: 10000
-- tapOn: "Username input field"
+- tapOn: "Username"
 - inputText: ${EMAIL}
-- tapOn: "Password input field"
+- tapOn: "Password"
 - inputText: ${PASSWORD}
 - hideKeyboard
-- tapOn: "Login button"
+- tapOn: "Login"
 - waitForAnimationToEnd
 - extendedWaitUntil:
     visible: "Sauce Labs Backpack"

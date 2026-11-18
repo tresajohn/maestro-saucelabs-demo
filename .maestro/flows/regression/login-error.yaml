@@ -23,13 +23,13 @@ tags:
       - tapOn: "Menu, tab, 3 of 3"
       - tapOn: "Log In"
 - extendedWaitUntil:
-    visible: "Username input field"
+    visible: "Username"
     timeout: 10000
-- tapOn: "Username input field"
+- tapOn: "Username"
 - inputText: "wrong@email.com"
-- tapOn: "Password input field"
+- tapOn: "Password"
 - inputText: "wrongpassword"
 - hideKeyboard
-- tapOn: "Login button"
+- tapOn: "Login"
 - assertVisible: "Provided credentials do not match any user in this service."
 - takeScreenshot: regression-login-error

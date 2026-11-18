@@ -10,48 +10,48 @@ env:
 - runFlow: ../../subflows/add-to-cart.yaml
 
 - tapOn: "1"
-- assertVisible: "Proceed To Checkout button"
+- assertVisible: "Proceed To Checkout"
 - takeScreenshot: smoke-cart-contents
-- tapOn: "Proceed To Checkout button"
+- tapOn: "Proceed To Checkout"
 
 - assertVisible: "Enter a shipping address"
-- tapOn: "Full Name\\* input field"
+- tapOn: "Full Name"
 - inputText: "Test User"
 - hideKeyboard
-- tapOn: "Address Line 1\\* input field"
+- tapOn: "Address Line 1"
 - inputText: "123 QA Street"
 - hideKeyboard
-- tapOn: "City\\* input field"
+- tapOn: "City"
 - inputText: "Test City"
 - hideKeyboard
-- tapOn: "State/Region input field"
+- tapOn: "State/Region"
 - inputText: "CA"
 - hideKeyboard
-- tapOn: "Zip Code\\* input field"
+- tapOn: "Zip Code"
 - inputText: "12345"
 - hideKeyboard
-- tapOn: "Country\\* input field"
+- tapOn: "Country"
 - inputText: "USA"
 - hideKeyboard
-- tapOn: "To Payment button"
+- tapOn: "To Payment"
 
 - assertVisible: "Enter a payment method"
-- tapOn: "Full Name\\* input field"
+- tapOn: "Full Name"
 - inputText: "Test User"
 - hideKeyboard
-- tapOn: "Card Number\\* input field"
+- tapOn: "Card Number"
 - inputText: "4111111111111111"
 - hideKeyboard
-- tapOn: "Expiration Date\\* input field"
+- tapOn: "Expiration Date"
 - inputText: "12/30"
 - hideKeyboard
-- tapOn: "Security Code\\* input field"
+- tapOn: "Security Code"
 - inputText: "123"
 - hideKeyboard
-- tapOn: "Review Order button"
+- tapOn: "Review Order"
 
 - assertVisible: "Review your order"
 - takeScreenshot: smoke-order-review
-- tapOn: "Place Order button"
+- tapOn: "Place Order"
 - assertVisible: "Thank you for your order"
 - takeScreenshot: smoke-order-confirmed
