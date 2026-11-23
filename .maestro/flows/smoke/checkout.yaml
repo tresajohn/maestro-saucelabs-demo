@@ -66,7 +66,7 @@ env:
       - inputText: "Test City"
       - hideKeyboard
       - tapOn: 
-          id: "State/Region input field (no*)"
+          id: "State/Region input field"
       - inputText: "CA"
       - hideKeyboard
       - tapOn:
