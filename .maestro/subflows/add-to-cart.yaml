@@ -13,5 +13,5 @@ appId: com.saucelabs.mydemoapp.rn
     when:
       platform: "iOS"
     commands:
-      - tapOn: "Add To Cart"
+      - tapOn: "Add To Cart Button"
 - takeScreenshot: item-added-to-cart
