@@ -7,13 +7,13 @@ env:
 ---
 - runFlow: ../../subflows/login.yaml
 - assertVisible: "Sauce Labs Backpack"
--runFlow:
+- runFlow:
   when:
     platform: "Android"
   commands:
     -tapOn: "Store item"
     -assertVisible: "Add To Cart button"
--runFlow:
+- runFlow:
   when:
     platform: "iOS"
   commands:
