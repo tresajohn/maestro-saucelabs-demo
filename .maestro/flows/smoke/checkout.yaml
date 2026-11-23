@@ -21,7 +21,7 @@ env:
       platform: "iOS"
     commands:
       - assertVisible: 
-        id: "Proceed To Checkout button"
+          id: "Proceed To Checkout button"
       - tapOn: "Proceed To Checkout button"
 
 - assertVisible: "Enter a shipping address"
@@ -53,31 +53,31 @@ env:
       platform: "iOS"
     commands:
       - tapOn: 
-        id: "Full Name\\* input field"
+          id: "Full Name\\* input field"
       - inputText: "Test User"
       - hideKeyboard
       - tapOn: 
-        id: "Address Line 1\\* input field"
+          id: "Address Line 1\\* input field"
       - inputText: "123 QA Street"
       - hideKeyboard
       - tapOn: 
-        id: "City\\* input field"
+          id: "City\\* input field"
       - inputText: "Test City"
       - hideKeyboard
       - tapOn: 
-        id: "State/Region input field (no*)"
+          id: "State/Region input field (no*)"
       - inputText: "CA"
       - hideKeyboard
       - tapOn:
-        id: "Zip Code\\* input field"
+          id: "Zip Code\\* input field"
       - inputText: "12345"
       - hideKeyboard
       - tapOn: 
-        id: "Country\\* input field"
+          id: "Country\\* input field"
       - inputText: "USA"
       - hideKeyboard
       - tapOn: 
-        id: "To Payment button"
+          id: "To Payment button"
 
 - assertVisible: "Enter a payment method"
 - runFlow:
@@ -102,23 +102,23 @@ env:
       platform: "iOS"
     commands:
       - tapOn: 
-        id: "Full Name\\* input field"
+          id: "Full Name\\* input field"
       - inputText: "Test User"
       - hideKeyboard
       - tapOn: 
-        id: "Card Number\\* input field"
+          id: "Card Number\\* input field"
       - inputText: "4111111111111111"
       - hideKeyboard
       - tapOn: 
-        id: "Expiration Date\\* input field"
+          id: "Expiration Date\\* input field"
       - inputText: "12/30"
       - hideKeyboard
       - tapOn: 
-        id: "Security Code\\* input field"
+          id: "Security Code\\* input field"
       - inputText: "123"
       - hideKeyboard
       - tapOn: 
-        id: "Review Order button"
+          id: "Review Order button"
 
 - assertVisible: "Review your order"
 - takeScreenshot: smoke-order-review
@@ -132,6 +132,6 @@ env:
       platform: "iOS"
     commands:
       - tapOn: 
-        id: "Place Order button"
+          id: "Place Order button"
 - assertVisible: "Thank you for your order"
 - takeScreenshot: smoke-order-confirmed
