@@ -40,13 +40,13 @@ tags:
       platform: "iOS"
     commands:
       - tapOn:
-        id: "Username input field"
+          id: "Username input field"
       - inputText: "wrong@email.com"
       - tapOn: 
-        id: "Password input field"
+          id: "Password input field"
       - inputText: "wrongpassword"
       - hideKeyboard
       - tapOn: 
-        id: "Login Button"
+          id: "Login Button"
 - assertVisible: "Provided credentials do not match any user in this service."
 - takeScreenshot: regression-login-error
