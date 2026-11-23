@@ -78,7 +78,7 @@ The Sauce Labs Demo App ships with built-in test accounts:
 
 | Username | Password |
 |----------|----------|
-| `bod@example.com` | `10203040` |
+| `bob@example.com` | `10203040` |
 
 ---
 
