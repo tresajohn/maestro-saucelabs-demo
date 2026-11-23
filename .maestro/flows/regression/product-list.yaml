@@ -11,13 +11,13 @@ env:
     when:
       platform: "Android"
     commands:
-      -tapOn: "Store item"
-      -assertVisible: "Add To Cart button"
+      - tapOn: "Suace Labs Backpack"
+      - assertVisible: "Add To Cart button"
 - runFlow:
     when:
       platform: "iOS"
     commands:
-      -tapOn: "Suace Labs Backpack"
-      -assertVisible: 
+      - tapOn: "Suace Labs Backpack"
+      - assertVisible: 
           id: "Add To Cart button"
 - takeScreenshot: regression-product-detail
