@@ -47,6 +47,6 @@ tags:
       - inputText: "wrongpassword"
       - hideKeyboard
       - tapOn: 
-          id: "Login Button"
+          id: "Login button"
 - assertVisible: "Provided credentials do not match any user in this service."
 - takeScreenshot: regression-login-error
