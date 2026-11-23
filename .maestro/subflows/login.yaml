@@ -47,7 +47,6 @@ appId: com.saucelabs.mydemoapp.rn
       - tapOn: 
           id: "Password input field"
       - inputText: ${PASSWORD}
-      - hideKeyboard
       - takeScreenshot: ios-debug-before-login-tap
       - tapOn: 
           id: "Login button"
