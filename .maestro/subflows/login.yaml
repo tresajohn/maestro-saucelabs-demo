@@ -5,7 +5,7 @@ appId: com.saucelabs.mydemoapp.rn
     clearState: true
 - extendedWaitUntil:
     visible: "Sauce Labs Backpack"
-    timeout: 60000
+    timeout: 120000
 - runFlow:
     when:
       visible: "open menu"
@@ -38,15 +38,8 @@ appId: com.saucelabs.mydemoapp.rn
     when:
       platform: "iOS"
     commands:
-      - takeScreenshot: ios-debug-block-start
       - tapOn: 
-          id: "Username input field"
-      - takeScreenshot: ios-debug-after-username-tap
-      - inputText: ${EMAIL}
-      - pressKey: Return
-      - takeScreenshot: ios-debug-after-email-input
-      - inputText: ${PASSWORD}
-      - takeScreenshot: ios-debug-before-login-tap
+          id: "bob@example.com-autofill"
       - tapOn: 
           id: "Login button"
 - waitForAnimationToEnd
