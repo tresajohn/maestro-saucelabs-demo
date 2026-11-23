@@ -6,7 +6,7 @@ tags:
     clearState: true
 - extendedWaitUntil:
     visible: "Sauce Labs Backpack"
-    timeout: 60000
+    timeout: 120000
 - runFlow:
     when:
       visible: "open menu"
@@ -40,12 +40,12 @@ tags:
       platform: "iOS"
     commands:
       - tapOn:
+          id: "bob@example.com-autofill"
+      - tapOn:
           id: "Username input field"
+      - eraseText:
       - inputText: "wrong@email.com"
-      - tapOn: 
-          id: "Password input field"
-      - inputText: "wrongpassword"
-      - hideKeyboard
+      - tapOn: "Select a username and password."
       - tapOn: 
           id: "Login button"
 - assertVisible: "Provided credentials do not match any user in this service."
