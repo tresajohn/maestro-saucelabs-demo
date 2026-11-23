@@ -20,8 +20,9 @@ env:
     when:
       platform: "iOS"
     commands:
-      - assertVisible: "Proceed To Checkout"
-      - tapOn: "Proceed To Checkout"
+      - assertVisible: 
+        id: "Proceed To Checkout button"
+      - tapOn: "Proceed To Checkout button"
 
 - assertVisible: "Enter a shipping address"
 - runFlow:
@@ -51,25 +52,32 @@ env:
     when:
       platform: "iOS"
     commands:
-      - tapOn: "Full Name"
+      - tapOn: 
+        id: "Full Name\\* input field"
       - inputText: "Test User"
       - hideKeyboard
-      - tapOn: "Address Line 1"
+      - tapOn: 
+        id: "Address Line 1\\* input field"
       - inputText: "123 QA Street"
       - hideKeyboard
-      - tapOn: "City"
+      - tapOn: 
+        id: "City\\* input field"
       - inputText: "Test City"
       - hideKeyboard
-      - tapOn: "State/Region"
+      - tapOn: 
+        id: "State/Region input field (no*)"
       - inputText: "CA"
       - hideKeyboard
-      - tapOn: "Zip Code"
+      - tapOn:
+        id: "Zip Code\\* input field"
       - inputText: "12345"
       - hideKeyboard
-      - tapOn: "Country"
+      - tapOn: 
+        id: "Country\\* input field"
       - inputText: "USA"
       - hideKeyboard
-      - tapOn: "To Payment"
+      - tapOn: 
+        id: "To Payment button"
 
 - assertVisible: "Enter a payment method"
 - runFlow:
@@ -93,19 +101,24 @@ env:
     when:
       platform: "iOS"
     commands:
-      - tapOn: "Full Name"
+      - tapOn: 
+        id: "Full Name\\* input field"
       - inputText: "Test User"
       - hideKeyboard
-      - tapOn: "Card Number"
+      - tapOn: 
+        id: "Card Number\\* input field"
       - inputText: "4111111111111111"
       - hideKeyboard
-      - tapOn: "Expiration Date"
+      - tapOn: 
+        id: "Expiration Date\\* input field"
       - inputText: "12/30"
       - hideKeyboard
-      - tapOn: "Security Code"
+      - tapOn: 
+        id: "Security Code\\* input field"
       - inputText: "123"
       - hideKeyboard
-      - tapOn: "Review Order"
+      - tapOn: 
+        id: "Review Order button"
 
 - assertVisible: "Review your order"
 - takeScreenshot: smoke-order-review
@@ -118,6 +131,7 @@ env:
     when:
       platform: "iOS"
     commands:
-      - tapOn: "Place Order"
+      - tapOn: 
+        id: "Place Order button"
 - assertVisible: "Thank you for your order"
 - takeScreenshot: smoke-order-confirmed
