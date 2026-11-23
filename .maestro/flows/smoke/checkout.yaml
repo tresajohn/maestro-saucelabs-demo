@@ -22,7 +22,8 @@ env:
     commands:
       - assertVisible: 
           id: "Proceed To Checkout button"
-      - tapOn: "Proceed To Checkout button"
+      - tapOn: 
+          id: "Proceed To Checkout button"
 
 - assertVisible: "Enter a shipping address"
 - runFlow:
