@@ -43,9 +43,9 @@ tags:
           id: "bob@example.com-autofill"
       - tapOn:
           id: "Username input field"
-      - eraseText:
+      - eraseText
       - inputText: "wrong@email.com"
-      - tapOn: "Select a username and password."
+      - tapOn: "Select a username and password.*"
       - tapOn: 
           id: "Login button"
 - assertVisible: "Provided credentials do not match any user in this service."
