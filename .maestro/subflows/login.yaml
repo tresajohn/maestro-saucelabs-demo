@@ -43,9 +43,8 @@ appId: com.saucelabs.mydemoapp.rn
           id: "Username input field"
       - takeScreenshot: ios-debug-after-username-tap
       - inputText: ${EMAIL}
+      - pressKey: Return
       - takeScreenshot: ios-debug-after-email-input
-      - tapOn: 
-          id: "Password input field"
       - inputText: ${PASSWORD}
       - takeScreenshot: ios-debug-before-login-tap
       - tapOn: 
