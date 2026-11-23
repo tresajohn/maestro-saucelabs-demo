@@ -39,10 +39,10 @@ tags:
     when:
       platform: "iOS"
     commands:
-      - tapOn: "Username"
+      - tapOn:
         id: "Username input field"
       - inputText: "wrong@email.com"
-      - tapOn: "Password"
+      - tapOn: 
         id: "Password input field"
       - inputText: "wrongpassword"
       - hideKeyboard
