@@ -1,1 +1,13 @@
-
+appId: com.saucelabs.mydemoapp.rn
+---
+- runFlow:
+    when:
+      platform: "Android"
+    commands:
+      - tapOn: "sort button"
+- runFlow:
+    when:
+      platform: "iOS"
+    commands:
+      - tapOn: 
+          id: "sort button"
