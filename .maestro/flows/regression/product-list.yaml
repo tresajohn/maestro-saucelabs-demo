@@ -7,6 +7,17 @@ env:
 ---
 - runFlow: ../../subflows/login.yaml
 - assertVisible: "Sauce Labs Backpack"
-- tapOn: "store item"
-- assertVisible: "Add To Cart button"
+-runFlow:
+  when:
+    platform: "Android"
+  commands:
+    -tapOn: "Store item"
+    -assertVisible: "Add To Cart button"
+-runFlow:
+  when:
+    platform: "iOS"
+  commands:
+    -tapOn: "Suace Labs Backpack"
+    -assertVisible: 
+      id: "Add To Cart button"
 - takeScreenshot: regression-product-detail
